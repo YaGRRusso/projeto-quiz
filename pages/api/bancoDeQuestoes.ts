@@ -3,7 +3,7 @@ import RespostaModel from "../../model/resposta";
 
 const questoes: QuestaoModel[] = [
 
-  new QuestaoModel(0, 'Qual a maneira correta de se escrever um IF', [
+  new QuestaoModel(0, 'Qual a maneira correta de se escrever um IF?', [
     RespostaModel.errada('if x = 10 {}'),
     RespostaModel.errada('if x = 10 then{}'),
     RespostaModel.errada('if (x = 10) then{}'),
