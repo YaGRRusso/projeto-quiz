@@ -1,16 +1,13 @@
-import questoes from '../bancoDeQuestoes' 
+import questoes from '../bancoDeQuestoes'
+export default function questoesProId(req, res) {
+    const idSelecionado = +req.query.id
 
-export default function handler(req, res) {
-  const id = +req.query.id
+    const unicaQuestaoOuNada = questoes.filter(questao => questao.id === idSelecionado)
 
-  const questaoSelec = questoes.filter(quest => quest.id === id)
-
-  if (questaoSelec.length === 1) {
-    const qs = questaoSelec[0].embaralharRespostas()
-    const obj = qs.responderCom(0).paraObjeto()
-    res.status(200).json(obj)
-  } else {
-    res.status(204).send()
-  }
-
+    if (unicaQuestaoOuNada.length === 1) {
+        const questaoSelecionada = unicaQuestaoOuNada[0].embaralharRespostas()
+        res.status(200).json(questaoSelecionada.paraObjeto())
+    } else {
+        res.status(204).send()
+    }
 }

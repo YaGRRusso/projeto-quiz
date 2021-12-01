@@ -1,6 +1,7 @@
 .resposta {
   display: flex;
-  width: 90%;
+  min-width: 500px;
+  width: 100%;
   height: 70px;
   margin: 10px;
   perspective: 1000px;
