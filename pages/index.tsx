@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Enunciado from "../components/Enunciado";
+import Botao from "../components/Botao";
 import Questao from "../components/Questao";
 import QuestaoModel from "../model/questao";
 import RespostaModel from "../model/resposta";
@@ -20,15 +20,24 @@ export default function Index() {
     setQuestao(questao.responderCom(indice))
   }
 
+  function tempoEsgotado() {
+    if (questao.naoRespondida) {
+      setQuestao(questao.responderCom(-1))
+    }
+  }
+
   return (
-    <div style={{
-      display: "flex",
+    <div style={{display: "flex",
+      flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      height: "100vh"
-    }}>
+      height: "100vh"}}>
 
-      <Questao valor={questao} respostaFornecida={respostaFornecida}/>
+      <Questao valor={questao}
+        tempoPraResposta={3}
+        respostaFornecida={respostaFornecida}
+        tempoEsgotado={tempoEsgotado} />
+      <Botao texto='Proxima' href='/resultado'/>
 
     </div>
   )
